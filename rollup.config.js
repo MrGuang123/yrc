@@ -23,11 +23,12 @@ export default [
         sourcemap: true
       }
     ],
+
     plugins: [
       PeerDepsExternalPlugin(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      typescript({ tsconfig: './tsconfig.json', exclude: /.test.tsx$/ }),
       postcss(),
       terser()
     ]
