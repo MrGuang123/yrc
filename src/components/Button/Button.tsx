@@ -1,12 +1,30 @@
-// import React from "react";
-import './Button.css'
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
+import { forwardRef } from 'react';
+
+import { useTheme } from '../ThemeWrapper';
+import { ThemeType } from '../Theme';
+import ButtonStyle from './Button.style'
 
 export interface ButtonProps {
-  label: string;
+  children?: string;
+  color: keyof ThemeType['colors'];
+  type: 'outline' | 'unstyled' | 'link';
+  size: 'sm' | 'md' | 'lg';
 }
 
-const Button = (props: ButtonProps) => {
-  return <button>{props.label}</button>
-}
+const Button = forwardRef((props: ButtonProps, ref) => {
+  const { children, color, type = 'outline', size = 'md' } = props
+  const theme = useTheme()
+  const buttonStyleProps = ButtonStyle({ color, type, size, theme })
+
+  return (
+    <button
+      {...buttonStyleProps}
+    >
+      {children}
+    </button>
+  )
+})
 
 export default Button;

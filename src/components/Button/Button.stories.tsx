@@ -14,10 +14,10 @@ export const HelloWorld = Template.bind({})
 
 // https://storybook.js.org/docs/react/writing-stories/args
 HelloWorld.args = {
-  label: 'hello world'
+  children: 'hello world'
 }
 
 export const ClickMe = Template.bind({})
 ClickMe.args = {
-  label: 'clickMe'
+  children: 'clickMe'
 }

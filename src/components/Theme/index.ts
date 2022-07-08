@@ -1,0 +1,1 @@
+export { default, ThemeType } from './theme-normal'
