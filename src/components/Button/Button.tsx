@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import { jsx } from '@emotion/react'
 import { forwardRef } from 'react';
 
@@ -11,6 +10,7 @@ export interface ButtonProps {
   color: keyof ThemeType['colors'];
   type: 'outline' | 'unstyled' | 'link';
   size: 'sm' | 'md' | 'lg';
+  onClick?: () => void;
 }
 
 const Button = forwardRef((props: ButtonProps, ref) => {
