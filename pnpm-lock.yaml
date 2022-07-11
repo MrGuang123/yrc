@@ -16,10 +16,12 @@ specifiers:
   '@storybook/addon-interactions': ^6.5.9
   '@storybook/addon-links': ^6.5.9
   '@storybook/addon-postcss': ^2.0.0
+  '@storybook/addons': ^6.5.9
   '@storybook/builder-webpack5': ^6.5.9
   '@storybook/manager-webpack5': ^6.5.9
   '@storybook/react': ^6.5.9
   '@storybook/testing-library': ^0.0.13
+  '@storybook/theming': ^6.5.9
   '@testing-library/react': ^13.3.0
   '@types/jest': ^28.1.4
   '@types/react': ^18.0.15
@@ -56,10 +58,12 @@ devDependencies:
   '@storybook/addon-interactions': 6.5.9_egeabnadkmsneosu3xikr6dtym
   '@storybook/addon-links': 6.5.9_biqbaboplfbrettd7655fr4n2y
   '@storybook/addon-postcss': 2.0.0
+  '@storybook/addons': 6.5.9_biqbaboplfbrettd7655fr4n2y
   '@storybook/builder-webpack5': 6.5.9_xrxvbtylmve4l2tr3vmmqgfp7q
   '@storybook/manager-webpack5': 6.5.9_xrxvbtylmve4l2tr3vmmqgfp7q
   '@storybook/react': 6.5.9_yelb3364dc7v36ujle3ijd2ncm
   '@storybook/testing-library': 0.0.13_biqbaboplfbrettd7655fr4n2y
+  '@storybook/theming': 6.5.9_biqbaboplfbrettd7655fr4n2y
   '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
   '@types/jest': 28.1.4
   '@types/react': 18.0.15
@@ -5252,7 +5256,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -10827,6 +10831,17 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dev: true
+
+  /promise-inflight/1.0.1_bluebird@3.7.2:
+    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
+    dependencies:
+      bluebird: 3.7.2
     dev: true
 
   /promise.allsettled/1.0.5:
