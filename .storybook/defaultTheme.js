@@ -1,4 +1,5 @@
 import { create } from '@storybook/theming'
+import brandImage from './heti.png'
 
 // https://storybook.js.org/docs/react/configure/theming#global-theming
 export default create({
@@ -6,7 +7,7 @@ export default create({
 
   brandTitle: 'YRC 组件库',
   brandUrl: '',
-  brandImage: './wukong.png',
+  brandImage,
   brandTarget: '_self',
 
   colorPrimary: 'hotpink',
@@ -24,7 +25,7 @@ export default create({
 
   // 工具栏样式
   barTextColor: 'white',
-  barSelectedColor: 'black',
+  barSelectedColor: 'red',
   barBg: '#1b1b24',
 
   // 表单颜色

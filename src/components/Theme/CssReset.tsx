@@ -24,6 +24,7 @@ export const CSSReset = () => (
       }
       main {
         display: block;
+        color: 'pink';
       }
       hr {
         border-top-width: 1px;

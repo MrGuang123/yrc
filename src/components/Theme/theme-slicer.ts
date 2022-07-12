@@ -6,7 +6,7 @@ const space = [
 const colors = {
   transparent: 'transparent',
   black: '#000',
-  white: '#fff',
+  white: 'yellow',
   primary: {
     50: "#ebf8ff",
     100: "#ceedff",
@@ -51,7 +51,7 @@ const theme = {
   sizes,
   ...fontStyle
 }
-console.log('ThemeNormal', theme)
+console.log('ThemeSlicer', 'hello world')
 
 export type ThemeType = typeof theme
 export default theme

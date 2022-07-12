@@ -1,24 +1,30 @@
 import { useContext, useMemo, Context } from 'react'
 import { jsx, ThemeContext, ThemeProvider, ThemeProviderProps } from '@emotion/react'
 
-import { ThemeType } from '../Theme/theme-normal'
+import { ThemeType } from '../Theme'
 
 export interface ThemeWrapperProps extends ThemeProviderProps {
   cssVarsRoot?: string
 }
 // export type Dict<T = any> = Record<string, T>
 
+
 const ThemeWrapper = (props: ThemeWrapperProps) => {
   const { cssVarsRoot, theme, children } = props
+  // console.log('theme', theme)
 
-  // const usedTheme = useMemo(() => toString(theme), [theme])
+  const usedTheme = useMemo(() => theme, [theme])
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={usedTheme}>
       {children}
     </ThemeProvider>
   )
 }
+
+// ThemeWrapper.defaultProps = {
+//   theme: ThemeNormal
+// }
 
 // <T extends object = Dict>
 export const useTheme = <T extends ThemeType>() => {
