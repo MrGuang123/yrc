@@ -8,7 +8,7 @@ export interface ThemeWrapperProps extends ThemeProviderProps {
 }
 // export type Dict<T = any> = Record<string, T>
 
-
+// https://styled-system.com/
 const ThemeWrapper = (props: ThemeWrapperProps) => {
   const { cssVarsRoot, theme, children } = props
   // console.log('theme', theme)
