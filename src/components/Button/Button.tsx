@@ -5,38 +5,41 @@ import { forwardRef, ReactNode, MouseEventHandler, createRef } from 'react';
 
 import { useTheme } from '../ThemeWrapper';
 import { ThemeType } from '../Theme';
+import StyledBox from '../StyledBox';
 import ButtonStyle from './Button.style'
 
 
-export type ButtonType = 'default' | 'primary' | 'ghost' | 'dashed' | 'link' | 'text'
-export type ButtonSize = 'sm' | 'md' | 'lg' | 'undefined'
+export type TButtonType = 'default' | 'primary' | 'ghost' | 'dashed' | 'link' | 'text'
+export type TButtonSize = 'sm' | 'md' | 'lg'
+export type TPresetTheme = 'primary' | 'auxiliary' | 'gray' | 'primaryBorder' | 'grayBorder' | 'report'
 export interface ButtonProps {
+  presetTheme: TPresetTheme;
   children?: ReactNode;
-  color?: keyof ThemeType['colors'];
-  type?: ButtonType;
-  size?: ButtonSize;
+  // type?: TButtonType;
+  // size: TButtonSize;
   onClick?: MouseEventHandler<HTMLElement>;
 }
 
 const Button = forwardRef((props: ButtonProps, ref) => {
   const {
     children,
-    color,
-    type = 'default',
-    size = 'md'
+    // type = 'default',
+    // size = 'md',
+    presetTheme,
+    ...rest
   } = props
   const buttonRef = (ref as any) || createRef<HTMLElement>()
   const theme = useTheme()
 
-  const buttonStyleProps = ButtonStyle({ color, type, size, theme })
+  const buttonStyleProps = ButtonStyle({ theme, presetTheme })
   // TODO: fix style problem 
   return (
-    <button
+    <StyledBox
       ref={buttonRef}
       {...buttonStyleProps}
     >
       {children}
-    </button>
+    </StyledBox>
   )
 })
 

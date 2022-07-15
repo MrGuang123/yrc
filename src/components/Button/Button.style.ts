@@ -1,9 +1,10 @@
 import '@emotion/react';
-import { ButtonProps } from './Button'
+import { ButtonProps, TPresetTheme } from './Button'
 import { ThemeType } from '../Theme'
 
-interface ButtonStyleProps extends ButtonProps {
+interface ButtonStyleProps {
   theme: ThemeType
+  presetTheme: TPresetTheme
 }
 
 const get = (color: string, hue: number) => `${color}.${hue}`;
@@ -28,44 +29,40 @@ const sizes = {
     minWidth: "8",
   },
 };
-const sizeProps = ({ size }: { size: ButtonStyleProps['size'] }) => sizes[size];
+// const sizeProps = ({ size }: { size: ButtonStyleProps['size'] }) => sizes[size];
 
-const ghostVariantProps = ({ color, theme }: ButtonStyleProps) => {
-  const _color = theme.colors[color]?.[200];
+const ghostVariantProps = () => {
 
   return {
-    color: get(_color, 500),
+    color: '#ccc',
     bg: "transparent",
     _hover: {
-      bg: get(_color, 50),
+      bg: '#ccc',
     },
     _active: {
-      bg: get(_color, 100),
+      bg: '#ccc',
     },
   }
 };
 
-const outlineVariantProps = (props: ButtonStyleProps) => {
-  const { color } = props;
-  const borderColor = get(color, 500);
-
+const outlineVariantProps = () => {
   return {
     border: "1px",
-    borderColor: borderColor,
-    ...ghostVariantProps(props),
+    borderColor: '#ccc',
+    ...ghostVariantProps(),
   };
 };
 
-const linkVariantProps = ({ color }: ButtonStyleProps) => ({
+const linkVariantProps = () => ({
   p: 0,
   height: "auto",
   lineHeight: "normal",
-  color: get(color, 600),
+  color: '#ccc',
   _hover: {
     textDecoration: "underline",
   },
   _active: {
-    color: get(color, 700),
+    color: '#ccc',
   },
 });
 
@@ -82,17 +79,45 @@ const unstyledStyle = {
   textAlign: "inherit",
 };
 
-const typeStyle = (props: ButtonStyleProps) => {
-  switch (props.type) {
-    case 'outline':
-      return outlineVariantProps(props)
-    case 'link':
-      return linkVariantProps(props)
-    case 'unstyled':
-      return unstyledStyle
-    default:
-      return {}
+// const typeStyle = (props: ButtonStyleProps) => {
+//   switch (props.type) {
+//     case 'outline':
+//       return outlineVariantProps(props)
+//     case 'link':
+//       return linkVariantProps()
+//     case 'unstyled':
+//       return unstyledStyle
+//     default:
+//       return {}
+//   }
+// }
+
+const presetThemeStyle = (props: ButtonStyleProps) => {
+  const { theme: { colors }, presetTheme } = props
+  const colorParams = colors['btnPreset'][presetTheme]
+  const baseProps = {
+    p: 0,
+    height: '30px',
+    lineHeight: '30px',
+    minWidth: '80px',
   }
+  const themeProps = {
+    color: colorParams.fontNormal,
+    backgroundColor: colorParams.bgNormal,
+    border: `1px solid ${colorParams.bdNormal}`,
+    _hover: {
+      color: colorParams.fontHover,
+      backgroundColor: colorParams.bgHover,
+      border: `1px solid ${colorParams.bdHover}`,
+    },
+    _active: {
+      color: colorParams.fontActive,
+      backgroundColor: colorParams.bgActive,
+      border: `1px solid ${colorParams.bdActive}`,
+    },
+  }
+
+  return { ...baseProps, ...themeProps }
 }
 
 const baseProps = {
@@ -110,8 +135,9 @@ const baseProps = {
 const buttonStyle = (props: ButtonStyleProps) => {
   return {
     ...baseProps,
-    ...sizeProps(props),
-    ...typeStyle(props)
+    // ...sizeProps(props),
+    // ...typeStyle(props)
+    ...presetThemeStyle(props)
   }
 };
 

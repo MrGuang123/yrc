@@ -2,246 +2,271 @@ import sizeStyles from "./common/sizeStyles"
 import FontStyles from "./common/fontStyles"
 import { space, shadows, breakpoints, zIndices, radii, opacity, borders } from './common/otherStyles'
 
-const colors = {
+const baseColor: {
+  [key: string]: {
+    [key: number]: string
+  } | string
+} = {
   transparent: "transparent",
   current: "currentColor",
 
   black: "#000",
   white: "#fff",
 
-  whiteAlpha: {
-    50: "rgba(255, 255, 255, 0.04)",
-    100: "rgba(255, 255, 255, 0.06)",
-    200: "rgba(255, 255, 255, 0.08)",
-    300: "rgba(255, 255, 255, 0.16)",
-    400: "rgba(255, 255, 255, 0.24)",
-    500: "rgba(255, 255, 255, 0.36)",
-    600: "rgba(255, 255, 255, 0.48)",
-    700: "rgba(255, 255, 255, 0.64)",
-    800: "rgba(255, 255, 255, 0.80)",
-    900: "rgba(255, 255, 255, 0.92)",
-  },
+  // 主色
+  primary: '#0164fe',
+  // 辅色
+  auxiliary: '#00b4ff',
+  /* 错误颜色 */
+  error: '#ff5959',
+  /* 警告提示颜色 */
+  warning: '#fec900',
+  /* 成功颜色 */
+  success: '#26cf70',
 
-  blackAlpha: {
-    50: "rgba(0, 0, 0, 0.04)",
-    100: "rgba(0, 0, 0, 0.06)",
-    200: "rgba(0, 0, 0, 0.08)",
-    300: "rgba(0, 0, 0, 0.16)",
-    400: "rgba(0, 0, 0, 0.24)",
-    500: "rgba(0, 0, 0, 0.36)",
-    600: "rgba(0, 0, 0, 0.48)",
-    700: "rgba(0, 0, 0, 0.64)",
-    800: "rgba(0, 0, 0, 0.80)",
-    900: "rgba(0, 0, 0, 0.92)",
-  },
-
-  gray: {
-    50: "#F7FAFC",
-    100: "#EDF2F7",
-    200: "#E2E8F0",
-    300: "#CBD5E0",
-    400: "#A0AEC0",
-    500: "#718096",
-    600: "#4A5568",
-    700: "#2D3748",
-    800: "#1A202C",
-    900: "#171923",
-  },
-
-  red: {
-    50: "#fff5f5",
-    100: "#fed7d7",
-    200: "#feb2b2",
-    300: "#fc8181",
-    400: "#f56565",
-    500: "#e53e3e",
-    600: "#c53030",
-    700: "#9b2c2c",
-    800: "#822727",
-    900: "#63171b",
-  },
-
-  orange: {
-    50: "#FFFAF0",
-    100: "#FEEBC8",
-    200: "#FBD38D",
-    300: "#F6AD55",
-    400: "#ED8936",
-    500: "#DD6B20",
-    600: "#C05621",
-    700: "#9C4221",
-    800: "#7B341E",
-    900: "#652B19",
-  },
-
-  yellow: {
-    50: "#fffff0",
-    100: "#fefcbf",
-    200: "#faf089",
-    300: "#f6e05e",
-    400: "#ecc94b",
-    500: "#d69e2e",
-    600: "#b7791f",
-    700: "#975a16",
-    800: "#744210",
-    900: "#5F370E",
-  },
-
-  green: {
-    50: "#f0fff4",
-    100: "#c6f6d5",
-    200: "#9ae6b4",
-    300: "#68d391",
-    400: "#48bb78",
-    500: "#38a169",
-    600: "#2f855a",
-    700: "#276749",
-    800: "#22543d",
-    900: "#1C4532",
-  },
-
-  teal: {
-    50: "#E6FFFA",
-    100: "#B2F5EA",
-    200: "#81E6D9",
-    300: "#4FD1C5",
-    400: "#38B2AC",
-    500: "#319795",
-    600: "#2C7A7B",
-    700: "#285E61",
-    800: "#234E52",
-    900: "#1D4044",
+  grey: {
+    50: '#171d2e',
+    100: '#1d2338',
+    200: '#262e48',
+    300: '#272f4a',
+    400: '#323c5d',
+    500: '#343740',
+    600: '#3a456a',
+    700: '#465582',
+    800: '#53607d',
+    900: '#5b637d',
+    1000: '#8a9ec3',
+    1100: '#e5e5e5'
   },
 
   blue: {
-    50: "#ebf8ff",
-    100: "#ceedff",
-    200: "#90cdf4",
-    300: "#63b3ed",
-    400: "#4299e1",
-    500: "#3182ce",
-    600: "#2a69ac",
-    700: "#1e4e8c",
-    800: "#153e75",
-    900: "#1a365d",
+    50: '#0050cb',
+    100: '#3282fe',
+    200: '#008fcb',
+    300: '#32c2ff',
+    400: '#3e8aff',
+    500: '#35b7f8',
+    600: '#2ac7f6',
+    700: '#90ffde'
   },
 
-  cyan: {
-    50: "#EDFDFD",
-    100: "#C4F1F9",
-    200: "#9DECF9",
-    300: "#76E4F7",
-    400: "#0BC5EA",
-    500: "#00B5D8",
-    600: "#00A3C4",
-    700: "#0987A0",
-    800: "#086F83",
-    900: "#065666",
+  blueAlpha: {
+    50: 'rgba(1, 100, 254, 0.2)',
+    100: 'rgba(1, 100, 254, 0.3)',
+    200: 'rgba(0, 80, 203, 0.3)',
+    300: 'rgba(50, 130, 254, 0.3)',
   },
 
-  purple: {
-    50: "#faf5ff",
-    100: "#e9d8fd",
-    200: "#d6bcfa",
-    300: "#b794f4",
-    400: "#9f7aea",
-    500: "#805ad5",
-    600: "#6b46c1",
-    700: "#553c9a",
-    800: "#44337a",
-    900: "#322659",
-  },
+}
 
-  pink: {
-    50: "#fff5f7",
-    100: "#fed7e2",
-    200: "#fbb6ce",
-    300: "#f687b3",
-    400: "#ed64a6",
-    500: "#d53f8c",
-    600: "#b83280",
-    700: "#97266d",
-    800: "#702459",
-    900: "#521B41",
-  },
+const getColor = (name: string, chroma: number) => baseColor[name][chroma]
 
-  linkedin: {
-    50: "#E8F4F9",
-    100: "#CFEDFB",
-    200: "#9BDAF3",
-    300: "#68C7EC",
-    400: "#34B3E4",
-    500: "#00A0DC",
-    600: "#008CC9",
-    700: "#0077B5",
-    800: "#005E93",
-    900: "#004471",
+const colors = {
+  /* 最底色, tooltip提示背景色 */
+  bg1: baseColor.black,
+  /* 各种块的背景色 */
+  bg2: '#1d2338',
+  /* input背景 */
+  bg3: baseColor.transparent,
+  /*  分页底色 */
+  bg4: '#323c5d',
+  /* 块中块背景， message背景 */
+  bg5: '#262e48',
+  /* 滚动条背景 */
+  bg6: '#465582',
+  /* logo背景色 */
+  bgLogo: '#35b7f8',
+  /* 页头页尾 */
+  bg7: '#171d2e',
+  /* 高亮起始背景 */
+  bg8: '#323c5d',
+  /* 高亮结束背景 */
+  bgLinearStart: '#323c5d',
+  /* 高亮结束背景 */
+  bgLinearEnd: '#323c5d',
+  bg9: '#323c5d',
+  /* 分页高亮 */
+  pageHighlight: baseColor.primary,
+  /* 头部下面线 */
+  bgHeaderBottom: baseColor.black,
+  fontColor1: '#3e8aff',
+  /* 暂无用途 */
+  fontColor2: '#2ac7f6',
+  /* 暂无用途 */
+  fontColor3: '#90ffde',
+  /* 二级菜单，placeholder，tip信息，表格体文字，分页其它文字，tab菜单正常，面包屑 */
+  fontColor4: '#8a9ec3',
+  /* 表单label，分页数字，input文字，一级菜单，块标题 */
+  fontColor5: '#e5e5e5',
+  /* 按钮文字，dialog标题和叉号，表格头文字，二级菜单高亮，对号，无数据提示 */
+  fontColor6: '#fff',
+  /* 禁用颜色 */
+  fontColor7: '#53607d',
+  /* 边框颜色 */
+  /* 1.input border 禁用状态/正常状态，分割线，按钮镂空 */
+  bdColor1: '#3a456a',
+  /* 块外边框 checkbox边框 */
+  bdColor2: '#343740',
+  /* 表格边框，内部块边框 */
+  /* 2.input border 警告 */
+  bdColor4: baseColor.error,
+  /* 渐变边框起始 */
+  bdLinearStart: baseColor.transparent,
+  /* 渐变边框结束 */
+  bdLinearEnd: baseColor.transparent,
+  /* 按钮颜色 */
+  /* theme1 */
+  btnPreset: {
+    primary: {
+      fontNormal: baseColor.white,
+      fontHover: baseColor.white,
+      fontActive: baseColor.white,
+      fontDisabled: baseColor.white,
+      bgNormal: baseColor.primary,
+      bgHover: '#3282fe',
+      bgActive: '#0050cb',
+      bgDisabled: baseColor.primary,
+      bdNormal: 'none',
+      bdHover: 'none',
+      bdActive: 'none',
+      bdDisabled: 'none',
+    },
+    auxiliary: {
+      fontNormal: baseColor.white,
+      fontHover: baseColor.white,
+      fontActive: baseColor.white,
+      fontDisabled: baseColor.white,
+      bgNormal: baseColor.auxiliary,
+      bgHover: '#32c2ff',
+      bgActive: '#008fcb',
+      bgDisabled: baseColor.auxiliary,
+      bdNormal: 'none',
+      bdHover: 'none',
+      bdActive: 'none',
+      bdDisabled: 'none',
+    },
+    report: {
+      fontNormal: '#323c5d',
+      fontHover: baseColor.primary,
+      fontActive: '#0050cb',
+      fontDisabled: '#323c5d',
+      bgNormal: baseColor.transparent,
+      bgHover: baseColor.transparent,
+      bgActive: baseColor.transparent,
+      bgDisabled: baseColor.transparent,
+      bdNormal: '#323c5d',
+      bdHover: baseColor.primary,
+      bdActive: '#0050cb',
+      bdDisabled: '#323c5d',
+    },
+    gray: {
+      fontNormal: baseColor.white,
+      fontHover: baseColor.white,
+      fontActive: baseColor.white,
+      fontDisabled: baseColor.white,
+      bgNormal: '#323c5d',
+      bgHover: '#5b637d',
+      bgActive: '#272f4a',
+      bgDisabled: '#323c5d',
+      bdNormal: 'none',
+      bdHover: 'none',
+      bdActive: 'none',
+      bdDisabled: 'none',
+    },
+    primaryBorder: {
+      fontNormal: baseColor.white,
+      fontHover: baseColor.white,
+      fontActive: baseColor.white,
+      fontDisabled: baseColor.white,
+      bgNormal: 'rgba(1, 100, 254, 0.3)',
+      bgHover: 'rgba(50, 130, 254, 0.3)',
+      bgActive: 'rgba(0, 80, 203, 0.3)',
+      bgDisabled: 'rgba(1, 100, 254, 0.2)',
+      bdNormal: baseColor.primary,
+      bdHover: '#3282fe',
+      bdActive: '#0050cb',
+      bdDisabled: baseColor.primary,
+    },
+    grayBorder: {
+      fontNormal: baseColor.white,
+      fontHover: baseColor.white,
+      fontActive: baseColor.white,
+      fontDisabled: baseColor.white,
+      bgNormal: baseColor.transparent,
+      bgHover: baseColor.transparent,
+      bgActive: baseColor.transparent,
+      bgDisabled: baseColor.transparent,
+      bdNormal: '#323c5d',
+      bdHover: baseColor.primary,
+      bdActive: '#272f4a',
+      bdDisabled: '#323c5d',
+    },
   },
-
-  facebook: {
-    50: "#E8F4F9",
-    100: "#D9DEE9",
-    200: "#B7C2DA",
-    300: "#6482C0",
-    400: "#4267B2",
-    500: "#385898",
-    600: "#314E89",
-    700: "#29487D",
-    800: "#223B67",
-    900: "#1E355B",
-  },
-
-  messenger: {
-    50: "#D0E6FF",
-    100: "#B9DAFF",
-    200: "#A2CDFF",
-    300: "#7AB8FF",
-    400: "#2E90FF",
-    500: "#0078FF",
-    600: "#0063D1",
-    700: "#0052AC",
-    800: "#003C7E",
-    900: "#002C5C",
-  },
-
-  whatsapp: {
-    50: "#e2f7f4",
-    100: "#c3f0e9",
-    200: "#a0e7dc",
-    300: "#76dccd",
-    400: "#43cfba",
-    500: "#00BFA5",
-    600: "#00ac92",
-    700: "#009780",
-    800: "#007d6a",
-    900: "#005a4c",
-  },
-
-  twitter: {
-    50: "#e5f4fd",
-    100: "#c8e9fb",
-    200: "#a8dcfa",
-    300: "#83cdf7",
-    400: "#57bbf5",
-    500: "#1DA1F2",
-    600: "#1a94da",
-    700: "#1681bf",
-    800: "#136b9e",
-    900: "#0d4d71",
-  },
-
-  telegram: {
-    50: "#e3f2f9",
-    100: "#c5e4f3",
-    200: "#a2d4ec",
-    300: "#7ac1e4",
-    400: "#47a9da",
-    500: "#0088CC",
-    600: "#007ab8",
-    700: "#006ba1",
-    800: "#005885",
-    900: "#003f5e",
-  },
+  btnTheme1NormalFont: baseColor.white,
+  btnTheme1NormalBg: baseColor.primary,
+  btnTheme1HoverFont: baseColor.white,
+  btnTheme1HoverBg: '#3282fe',
+  btnTheme1ActiveFont: baseColor.white,
+  btnTheme1ActiveBg: '#0050cb',
+  btnTheme1DisableFont: baseColor.white,
+  btnTheme1DisableBg: baseColor.primary,
+  /* theme2 */
+  btnTheme2NormalFont: baseColor.white,
+  btnTheme2NormalBg: baseColor.auxiliary,
+  btnTheme2HoverFont: baseColor.white,
+  btnTheme2HoverBg: '#32c2ff',
+  btnTheme2ActiveFont: baseColor.white,
+  btnTheme2ActiveBg: '#008fcb',
+  btnTheme2DisableFont: baseColor.white,
+  btnTheme2DisableBg: baseColor.auxiliary,
+  /* theme3 */
+  btnTheme3NormalFont: '#323c5d',
+  btnTheme3NormalBg: baseColor.transparent,
+  btnTheme3NormalBd: '#323c5d',
+  btnTheme3HoverFont: baseColor.primary,
+  btnTheme3HoverBg: baseColor.transparent,
+  btnTheme3HoverBd: baseColor.primary,
+  btnTheme3ActiveFont: '#0050cb',
+  btnTheme3ActiveBg: baseColor.transparent,
+  btnTheme3ActiveBd: '#0050cb',
+  btnTheme3DisableFont: '#323c5d',
+  btnTheme3DisableBg: baseColor.transparent,
+  btnTheme3DisableBd: '#323c5d',
+  /* theme4 */
+  btnTheme4NormalFont: baseColor.white,
+  btnTheme4NormalBg: '#323c5d',
+  btnTheme4HoverFont: baseColor.white,
+  btnTheme4HoverBg: '#5b637d',
+  btnTheme4ActiveFont: baseColor.white,
+  btnTheme4ActiveBg: '#272f4a',
+  btnTheme4DisableFont: baseColor.white,
+  btnTheme4DisableBg: '#323c5d',
+  /* theme5 */
+  btnTheme5NormalFont: baseColor.white,
+  btnTheme5NormalBg: baseColor.transparent,
+  btnTheme5NormalBd: '#323c5d',
+  btnTheme5HoverFont: baseColor.white,
+  btnTheme5HoverBg: baseColor.transparent,
+  btnTheme5HoverBd: '#5b637d',
+  btnTheme5ActiveFont: baseColor.white,
+  btnTheme5ActiveBg: baseColor.transparent,
+  btnTheme5ActiveBd: '#272f4a',
+  btnTheme5DisableFont: baseColor.white,
+  btnTheme5DisableBg: baseColor.transparent,
+  btnTheme5DisableBd: '#323c5d',
+  /* theme6 */
+  btnTheme6NormalFont: baseColor.white,
+  btnTheme6NormalBg: 'rgba(1, 100, 254, 0.3)',
+  btnTheme6NormalBd: baseColor.primary,
+  btnTheme6HoverFont: baseColor.white,
+  btnTheme6HoverBg: 'rgba(50, 130, 254, 0.3)',
+  btnTheme6HoverBd: '#3282fe',
+  btnTheme6ActiveFont: baseColor.white,
+  btnTheme6ActiveBg: 'rgba(0, 80, 203, 0.3)',
+  btnTheme6ActiveBd: '#0050cb',
+  btnTheme6DisableFont: baseColor.white,
+  btnTheme6DisableBg: 'rgba(1, 100, 254, 0.2)',
+  btnTheme6DisableBd: baseColor.primary,
 };
 
 
