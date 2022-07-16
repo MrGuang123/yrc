@@ -8,16 +8,10 @@ export default {
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    // backgroundColor: { control: 'color' },
     onClick: {
       action: 'clicked'
     },
-    label: {
-      options: ['sm', 'md', 'lg'],
-      mapping: {
-        sm: <b>ssss</b>
-      }
-    }
   },
 } as ComponentMeta<typeof Button>;
 
