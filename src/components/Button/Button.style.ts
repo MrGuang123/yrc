@@ -5,10 +5,11 @@ import { ThemeType } from '../Theme'
 interface ButtonStyleProps {
   theme: ThemeType
   presetTheme: TPresetTheme
+  disabled: boolean;
 }
 
 const presetThemeStyle = (props: ButtonStyleProps) => {
-  const { theme: { colors }, presetTheme } = props
+  const { theme: { colors }, presetTheme, disabled } = props
   if (!colors) {
     return {}
   }
@@ -36,7 +37,27 @@ const presetThemeStyle = (props: ButtonStyleProps) => {
     },
   }
 
-  return { ...baseProps, ...themeProps }
+  const disabledParams = {
+    color: colorParams.fontDisabled,
+    backgroundColor: colorParams.bgDisabled,
+    border: `1px solid ${colorParams.bdDisabled}`,
+    cursor: 'not-allowed',
+    opacity: 0.5
+  }
+  const disabledThemeProps = {
+    ...disabledParams,
+    '&:hover': {
+      ...disabledParams
+    },
+    '&:active': {
+      ...disabledParams
+    },
+  }
+
+  const useThemeProps = disabled ? disabledThemeProps : themeProps
+  console.log('disabled', disabled, useThemeProps);
+
+  return { ...baseProps, ...useThemeProps }
 }
 
 const baseProps = {

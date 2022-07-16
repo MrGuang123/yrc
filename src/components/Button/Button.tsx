@@ -41,12 +41,13 @@ const Button = forwardRef((props: ButtonProps, ref) => {
     // type = 'default',
     // size = 'md',
     presetTheme,
+    disabled = false,
     ...rest
   } = props
   const buttonRef = (ref as any) || createRef<HTMLElement>()
   const theme = useTheme()
 
-  const buttonStyleProps = ButtonStyle({ theme, presetTheme })
+  const buttonStyleProps = ButtonStyle({ theme, presetTheme, disabled })
 
   return (
     <StyledBox

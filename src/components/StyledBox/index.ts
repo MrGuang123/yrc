@@ -12,7 +12,7 @@ import {
   shadow,
   space,
   typography,
-  styleFn
+  styleFn,
 } from "styled-system";
 import extraConfig, { tx } from "./config";
 
