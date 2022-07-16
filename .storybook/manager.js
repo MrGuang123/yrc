@@ -1,6 +1,10 @@
-import { addons } from '@storybook/addons'
-import defaultTheme from './defaultTheme'
+import { addons, makeDecorator } from '@storybook/addons'
+import normalTheme from './themes/normalTheme'
+import slicerTheme from './themes/slicerTheme'
 
 addons.setConfig({
-  theme: defaultTheme
+  theme: normalTheme
 })
+// addons.setConfig({
+//   theme: slicerTheme
+// })

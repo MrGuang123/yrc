@@ -80,6 +80,10 @@ const baseColor: {
 const getColor = (name: string, chroma: number) => baseColor[name][chroma]
 
 const colors = {
+  // 主色
+  primary: '#00aaff',
+  // 辅色
+  auxiliary: '#00b4ff',
   /* 最底色, tooltip提示背景色 */
   bg1: baseColor.black,
   /* 各种块的背景色 */

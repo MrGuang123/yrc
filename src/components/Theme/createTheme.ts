@@ -8,7 +8,7 @@ const themeMap: {
   slicer: ThemeSlicer
 }
 const createTheme = (theme: string): ThemeType => {
-  console.log('theme', theme)
+  // console.log('theme', theme)
   return themeMap[theme]
 }
 

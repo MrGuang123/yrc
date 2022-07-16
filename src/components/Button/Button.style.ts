@@ -62,7 +62,6 @@ const presetThemeStyle = (props: ButtonStyleProps) => {
   }
 
   const useThemeProps = disabled ? disabledThemeProps : themeProps
-  console.log('disabled', disabled, useThemeProps);
 
   return { ...baseProps, ...useThemeProps }
 }
