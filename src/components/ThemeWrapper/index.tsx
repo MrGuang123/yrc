@@ -1,1 +1,1 @@
-export { default, useTheme, ThemeWrapperProps } from './ThemeWrapper'
+export { default as ThemeWrapper, useTheme, ThemeWrapperProps } from './ThemeWrapper'

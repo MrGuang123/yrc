@@ -1,12 +1,17 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { themes } from '@storybook/theming'
-import ThemeWrapper from '../src/components/ThemeWrapper'
+import { ThemeWrapper } from '../src/components/ThemeWrapper'
 import { CssReset, createTheme } from '../src/components/Theme'
 
 const withThemeProvider = (Story, context) => {
   const [themeName, setThemeName] = useState('normal')
   const [useTheme, setUseTheme] = useState({})
+
+  useEffect(() => {
+    const currentTheme = createTheme(themeName)
+    setUseTheme(currentTheme)
+  }, [])
 
   const changeTheme = () => {
     const useThemeName = themeName === 'normal' ? 'slicer' : 'normal'

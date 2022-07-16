@@ -1,7 +1,19 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { forwardRef, ReactNode, MouseEventHandler, createRef } from 'react';
+import {
+  background,
+  border,
+  color,
+  flexbox,
+  grid,
+  layout,
+  position,
+  shadow,
+  space,
+  typography,
+  styleFn
+} from "styled-system";
 
 import { useTheme } from '../ThemeWrapper';
 import { ThemeType } from '../Theme';
@@ -15,9 +27,12 @@ export type TPresetTheme = 'primary' | 'auxiliary' | 'gray' | 'primaryBorder' | 
 export interface ButtonProps {
   presetTheme: TPresetTheme;
   children?: ReactNode;
+  disabled?: boolean
+  // type?: 'button';
+  // as?: 'button';
   // type?: TButtonType;
   // size: TButtonSize;
-  onClick?: MouseEventHandler<HTMLElement>;
+  // onClick?: MouseEventHandler<HTMLElement>;
 }
 
 const Button = forwardRef((props: ButtonProps, ref) => {
@@ -32,15 +47,33 @@ const Button = forwardRef((props: ButtonProps, ref) => {
   const theme = useTheme()
 
   const buttonStyleProps = ButtonStyle({ theme, presetTheme })
-  // TODO: fix style problem 
+
   return (
     <StyledBox
       ref={buttonRef}
       {...buttonStyleProps}
+      {...rest}
     >
       {children}
     </StyledBox>
   )
+  // const ButtonDom = styled('button')(css({
+  //   color: 'white',
+  //   border: '1px solid #ccc',
+  //   background: 'yellowgreen',
+  //   '&:hover': {
+  //     color: 'red'
+  //   }
+  // }),
+  //   background,
+  //   border,
+  //   color
+  // )
+  // return <ButtonDom>{children}</ButtonDom>
 })
+
+Button.defaultProps = {
+  disabled: false
+}
 
 export default Button;
