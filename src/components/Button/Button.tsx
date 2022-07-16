@@ -31,7 +31,7 @@ export interface ButtonProps {
   // type?: 'button';
   // as?: 'button';
   // type?: TButtonType;
-  // size: TButtonSize;
+  size?: TButtonSize;
   // onClick?: MouseEventHandler<HTMLElement>;
 }
 
@@ -39,7 +39,7 @@ const Button = forwardRef((props: ButtonProps, ref) => {
   const {
     children,
     // type = 'default',
-    // size = 'md',
+    size = 'md',
     presetTheme,
     disabled = false,
     ...rest
@@ -47,7 +47,7 @@ const Button = forwardRef((props: ButtonProps, ref) => {
   const buttonRef = (ref as any) || createRef<HTMLElement>()
   const theme = useTheme()
 
-  const buttonStyleProps = ButtonStyle({ theme, presetTheme, disabled })
+  const buttonStyleProps = ButtonStyle({ theme, presetTheme, disabled, size })
 
   return (
     <StyledBox
@@ -74,7 +74,8 @@ const Button = forwardRef((props: ButtonProps, ref) => {
 })
 
 Button.defaultProps = {
-  disabled: false
+  disabled: false,
+  size: 'md'
 }
 
 export default Button;

@@ -11,6 +11,12 @@ export default {
     backgroundColor: { control: 'color' },
     onClick: {
       action: 'clicked'
+    },
+    label: {
+      options: ['sm', 'md', 'lg'],
+      mapping: {
+        sm: <b>ssss</b>
+      }
     }
   },
 } as ComponentMeta<typeof Button>;
@@ -26,6 +32,7 @@ presetTheme.args = {
   disabled: false,
   children: 'Test Button',
 };
+
 
 // export const Small = Template.bind({});
 // Small.args = {

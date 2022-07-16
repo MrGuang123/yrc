@@ -6,10 +6,17 @@ interface ButtonStyleProps {
   theme: ThemeType
   presetTheme: TPresetTheme
   disabled: boolean;
+  size: ButtonProps['size']
+}
+
+const heightSize = {
+  sm: 22,
+  md: 26,
+  lg: 30
 }
 
 const presetThemeStyle = (props: ButtonStyleProps) => {
-  const { theme: { colors }, presetTheme, disabled } = props
+  const { theme: { colors }, presetTheme, disabled, size = 'md' } = props
   if (!colors) {
     return {}
   }
@@ -17,8 +24,8 @@ const presetThemeStyle = (props: ButtonStyleProps) => {
   const colorParams = colors['btnPreset'][presetTheme]
   const baseProps = {
     padding: '0 16px',
-    height: '30px',
-    lineHeight: '30px',
+    height: heightSize[size],
+    lineHeight: heightSize[size],
     minWidth: '48px',
   }
   const themeProps = {
@@ -69,7 +76,8 @@ const baseProps = {
   position: "relative",
   whiteSpace: "nowrap",
   verticalAlign: "middle",
-  borderRadius: '15px'
+  borderRadius: '15px',
+  fontSize: '14px'
 };
 
 
