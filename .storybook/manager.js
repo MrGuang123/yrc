@@ -3,7 +3,10 @@ import normalTheme from './themes/normalTheme'
 import slicerTheme from './themes/slicerTheme'
 
 addons.setConfig({
-  theme: normalTheme
+  theme: normalTheme,
+  sidebar: {
+    showRoots: false
+  }
 })
 // addons.setConfig({
 //   theme: slicerTheme

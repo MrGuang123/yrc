@@ -18,12 +18,15 @@ const withThemeProvider = (Story, context) => {
 
     setThemeName(useThemeName)
   }
-  console.log('useTheme', themes);
+  console.log('context', context);
+
+  const showStyleButton = context.kind.includes('Components')
+
   return (
     <ThemeWrapper theme={useTheme}>
       <CssReset />
       <Story {...context} />
-      <button
+      {showStyleButton && <button
         style={{
           position: 'fixed',
           left: '10px',
@@ -38,7 +41,7 @@ const withThemeProvider = (Story, context) => {
         onClick={changeTheme}
       >
         {themeName}
-      </button>
+      </button>}
     </ThemeWrapper>
   )
 }
@@ -74,6 +77,11 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  options: {
+    storySort: {
+      order: ['Getting Started', 'Components']
+    }
+  }
   // backgrounds: {
   //   default: 'slicer',
   //   values: [

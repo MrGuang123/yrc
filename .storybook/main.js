@@ -8,7 +8,7 @@ module.exports = {
   stories: [
     {
       directory: '../src/docs',
-      titlePrefix: 'YRC',
+      // titlePrefix: 'YRC',
       files: '*.stories.*'
     }
   ],
