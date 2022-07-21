@@ -26,6 +26,7 @@ presetTheme.args = {
   presetTheme: 'primary',
   disabled: false,
   children: 'Test Button',
+  size: 'md'
 };
 
 

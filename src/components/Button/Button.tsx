@@ -52,30 +52,18 @@ const Button = forwardRef((props: ButtonProps, ref) => {
   return (
     <StyledBox
       ref={buttonRef}
+      as="button"
       {...buttonStyleProps}
       {...rest}
     >
       {children}
     </StyledBox>
   )
-  // const ButtonDom = styled('button')(css({
-  //   color: 'white',
-  //   border: '1px solid #ccc',
-  //   background: 'yellowgreen',
-  //   '&:hover': {
-  //     color: 'red'
-  //   }
-  // }),
-  //   background,
-  //   border,
-  //   color
-  // )
-  // return <ButtonDom>{children}</ButtonDom>
 })
 
 Button.defaultProps = {
   disabled: false,
-  size: 'md'
+  size: 'md',
 }
 
 export default Button;

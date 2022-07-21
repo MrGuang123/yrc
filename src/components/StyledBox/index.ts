@@ -48,7 +48,7 @@ const wordBreak: styleFn = (props: IWordBreak) => {
 
 // 默认情况下emotion将除主题外的所有prop传递给组件，并且只传递有效的HTML字符串prop
 // 可以通过shouldForwardProp自定义，还可以使用@emotion/is-prop-valid过滤无效的HTMLprop
-const Box = styled("button", {
+const Box = styled("div", {
   shouldForwardProp,
 })(
   wordBreak,
