@@ -18,7 +18,6 @@ const withThemeProvider = (Story, context) => {
 
     setThemeName(useThemeName)
   }
-  console.log('context', context);
 
   const showStyleButton = context.kind.includes('Components')
 
@@ -79,7 +78,7 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Getting Started', 'Components']
+      order: ['Getting Started', ['Introduction', 'BaseColor'], 'Components']
     }
   }
   // backgrounds: {

@@ -1,17 +1,18 @@
 import { forwardRef } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import styled from "@emotion/styled";
-import { css } from '@emotion/react'
 
-const IntroductionDom = forwardRef((props: any, ref) => {
+import BaseColorMap from '../components/BaseColorMap';
+
+const BaseColorDom = forwardRef((props: any, ref) => {
   return (
-    <h1 style={{ color: '#fff' }}>welcom to YRC components</h1>
+    <BaseColorMap></BaseColorMap>
   )
 })
 
 export default {
-  title: 'Getting Started/Introduction',
-  component: IntroductionDom,
+  title: 'Getting Started/BaseColor',
+  component: BaseColorDom,
+  sort: 1,
   // parameters: {
   //   controls: {
   //     disabled: true
@@ -27,8 +28,8 @@ export default {
   //     action: 'clicked'
   //   },
   // },
-} as ComponentMeta<typeof IntroductionDom>;
+} as ComponentMeta<typeof BaseColorDom>;
 
-const Template: ComponentStory<typeof IntroductionDom> = (args) => <IntroductionDom {...args} />;
+const Template: ComponentStory<typeof BaseColorDom> = (args) => <BaseColorDom {...args} />;
 
-export const Introduction = Template.bind({});
+export const BaseColor = Template.bind({});
