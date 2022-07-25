@@ -32,6 +32,7 @@ export interface ButtonProps {
   // as?: 'button';
   // type?: TButtonType;
   size?: TButtonSize;
+  customStyle: { [key: string]: string }
   // onClick?: MouseEventHandler<HTMLElement>;
 }
 
@@ -42,12 +43,13 @@ const Button = forwardRef((props: ButtonProps, ref) => {
     size = 'md',
     presetTheme,
     disabled = false,
+    customStyle = {},
     ...rest
   } = props
   const buttonRef = (ref as any) || createRef<HTMLElement>()
   const theme = useTheme()
 
-  const buttonStyleProps = ButtonStyle({ theme, presetTheme, disabled, size })
+  const buttonStyleProps = ButtonStyle({ theme, presetTheme, disabled, size, customStyle })
 
   return (
     <StyledBox

@@ -7,6 +7,7 @@ interface ButtonStyleProps {
   presetTheme: TPresetTheme
   disabled: boolean;
   size: ButtonProps['size']
+  customStyle: ButtonProps['customStyle']
 }
 
 const heightSize = {
@@ -85,7 +86,8 @@ const buttonStyle = (props: ButtonStyleProps) => {
     ...baseProps,
     // ...sizeProps(props),
     // ...typeStyle(props)
-    ...presetThemeStyle(props)
+    ...presetThemeStyle(props),
+    ...props.customStyle
   }
 };
 

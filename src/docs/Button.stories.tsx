@@ -26,7 +26,10 @@ presetTheme.args = {
   presetTheme: 'primary',
   disabled: false,
   children: 'Test Button',
-  size: 'md'
+  size: 'md',
+  customStyle: {
+    color: 'red'
+  }
 };
 
 
