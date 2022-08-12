@@ -9,3 +9,5 @@ resolve by dohooo's solution
 https://github.com/chakra-ui/chakra-ui/blob/f98473dd76/packages/theme/src/index.ts
 
 https://github.com/segunadebayo/chakra-ui/blob/master/.storybook/config.js
+
+https://mantine.dev/others/notifications/
