@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { themes } from '@storybook/theming'
 import { ThemeWrapper } from '../src/components/ThemeWrapper'
 import { CssReset, createTheme } from '../src/components/Theme'
+import { ThemeNormal } from '../src/components/Theme'
 
 const withThemeProvider = (Story, context) => {
   const [themeName, setThemeName] = useState('normal')
@@ -52,7 +53,29 @@ export const decorators = [withThemeProvider];
 
 export const parameters = {
   docs: {
-    theme: themes.normal
+    theme: {
+      ...themes.dark,
+      // 界面
+      appBg: ThemeNormal.colors.bg2,
+      appContentBg: ThemeNormal.colors.bg5,
+      appBorderColor: ThemeNormal.colors.bdColor1,
+      appBorderRadius: 4,
+
+      // 排版
+      textColor: ThemeNormal.colors.fontColor4,
+      textInverseColor: 'rgba(0, 0, 0, .9)',
+
+      // 工具栏样式
+      barTextColor: ThemeNormal.colors.fontColor4,
+      barSelectedColor: ThemeNormal.colors.primary,
+      barBg: ThemeNormal.colors.bg5,
+
+      // 表单颜色
+      inputBg: ThemeNormal.colors.bg5,
+      inputBorder: ThemeNormal.colors.bdColor1,
+      inputTextColor: ThemeNormal.colors.fontColor4,
+      inputBorderRadius: 4,
+    },
   },
   // themes: {
   //   default: 'slicer',
