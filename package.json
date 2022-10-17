@@ -71,5 +71,11 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.10.3",
+    "@emotion/serialize": "^1.1.0",
+    "@emotion/utils": "^1.2.0",
+    "clsx": "^1.2.1"
   }
 }
